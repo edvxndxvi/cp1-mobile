@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 export default function Form({navigation}) {
   const [nomeProduto, setNomeProduto] = useState('')
@@ -15,9 +15,14 @@ export default function Form({navigation}) {
       alert('Por favor, insira valores válidos!');
     }
   };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>$ New Price $</Text>
+      <Image
+        source={require('../../assets/cifrao.png')}
+        style={styles.imagem}
+      />
+      <Text style={styles.titulo}>Calculadora de Preço</Text>
 
       <View style={styles.form}>
         <TextInput
@@ -30,7 +35,7 @@ export default function Form({navigation}) {
         />
         <TextInput
           style={styles.input}
-          placeholder='Digite o valor original do prouto'
+          placeholder='Digite o valor original do produto'
           keyboardType='numeric'
           value={valorOriginal}
           onChangeText={(valor) => setValorOriginal(valor)}
@@ -49,7 +54,6 @@ export default function Form({navigation}) {
           <Text style={styles.btnText}>Ver novo valor</Text>
         </TouchableOpacity>
       </View>
-           
     </View>
   );
 }
@@ -59,33 +63,53 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E0EEC6',
     alignItems: 'center',
-    paddingTop: 100,
+    justifyContent: 'center',
+    paddingHorizontal: 12,
+  },
+  imagem: {
+    resizeMode: 'center',
+    width: 100,
+    height: 100
   },
   titulo: {
-    fontSize: 56,
+    fontSize: 40,
     fontWeight: 'bold',
     color: '#243E36',
-    marginBottom: 24
+    marginBottom: 24,
+    textAlign: 'center',
   },
   form: {
-    gap: 12
+    width: '100%', 
+    maxWidth: 400, 
+    gap: 20, 
   },
   input: {
     backgroundColor: "white",
-    width: 300,
-    borderRadius: 12,
-    paddingLeft: 10,
+    width: '100%',
+    borderRadius: 8, 
+    paddingLeft: 15,
+    paddingVertical: 12, 
     borderWidth: 1,
-    borderColor: '#243E36'
+    borderColor: '#D1D8D6',
+    fontSize: 16, 
+    marginBottom: 10, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   btn: {
     backgroundColor: '#243E36',
     alignItems: 'center',
-    paddingBlock: 10,
-    borderRadius: 12
+    paddingVertical: 15, 
+    borderRadius: 8,
+    marginTop: 10,
+    elevation: 3, 
   },
   btnText: {
     color: '#fff',
-    fontWeight: 'medium'
-  }
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
 });

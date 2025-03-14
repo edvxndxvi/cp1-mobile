@@ -16,11 +16,13 @@ export default function Calculador({ nome, precoOriginal, aumento }) {
 }
 const styles = StyleSheet.create({
     container: {
-        gap: 12
+        gap: 12,
+        backgroundColor: '#fff',
+        padding: 16,
     },
     text: {
         color: '#243E36',
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: 18
     },
 });
